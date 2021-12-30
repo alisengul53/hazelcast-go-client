@@ -1,5 +1,6 @@
 name: Report coverage to Codecov
 on:
+    workflow_dispatch:
     push:
       branches: 
         - master
