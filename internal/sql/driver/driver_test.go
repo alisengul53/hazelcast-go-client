@@ -36,6 +36,19 @@ import (
 	"github.com/hazelcast/hazelcast-go-client/types"
 )
 
+func TestArgNotNil(t *testing.T) {
+	var b *big.Int
+	nv := &driver.NamedValue{
+		Name:    "",
+		Ordinal: 0,
+		Value:   b,
+	}
+	conn := idriver.Conn{}
+	err := conn.CheckNamedValue(nv)
+	assert.Error(t, err)
+	assert.Equal(t, "nil arg is not allowed: illegal argument error", err.Error())
+}
+
 func TestParseDSN(t *testing.T) {
 	testCases := []struct {
 		Err           error
@@ -439,17 +452,4 @@ func TestExtractSchema(t *testing.T) {
 			assert.Equal(t, tc.Target, idriver.ExtractSchema(ctx))
 		})
 	}
-}
-
-func TestArgNotNil(t *testing.T) {
-	var b *big.Int
-	nv := &driver.NamedValue{
-		Name:    "",
-		Ordinal: 0,
-		Value:   b,
-	}
-	conn := idriver.Conn{}
-	err := conn.CheckNamedValue(nv)
-	assert.Error(t, err)
-	assert.Equal(t, "nil arg is not allowed: illegal argument error", err.Error())
 }
