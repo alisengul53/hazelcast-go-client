@@ -1,4 +1,4 @@
-# Hazelcast Go Client
+# Hazelcast Go Client Test
 
 [![Go Reference](https://pkg.go.dev/badge/github.com/hazelcast/hazelcast-go-client.svg)](https://pkg.go.dev/github.com/hazelcast/hazelcast-go-client)
 
